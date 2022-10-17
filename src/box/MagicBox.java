@@ -3,7 +3,7 @@ package box;
 
 public class MagicBox<T> {
 
-    protected int SIZE = 4;
+    protected int SIZE = 5;
 
     T[] items = (T[]) new Object[SIZE];
 
