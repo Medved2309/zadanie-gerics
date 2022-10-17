@@ -1,34 +1,39 @@
 package box;
 
+import java.util.Random;
 
 public class MagicBox<T> {
 
-    protected int SIZE = 5;
+    Random random = new Random();
 
-    T[] items = (T[]) new Object[SIZE];
+
+    private T[] items;
+
+    public MagicBox(int SIZE) {
+        this.items = (T[]) new Object[SIZE];
+    }
 
     public boolean add(T item) { // Заполнение коробки
         for (int i = 0; i < items.length; i++) {
             if (items[i] == null) {
                 items[i] = item;
-                System.out.println("Добавили " + item);
+                System.out.println("Добавили: " + item + ". Осталось добавить элементов " + (items.length - i));
                 return true;
             }
         }
+        System.out.println("Коробка заполнена нажмите end");
         return false;
     }
 
-    public int pick() { // проверка на заполнение коробки
-        int difference = 0;
+    public T pick() {
         for (int i = 0; i < items.length; i++) {
             if (items[i] == null) {
-                difference = items.length - i +1;
-                break;
-
-
+                throw new RuntimeException(String.format("Коробка не заполна, необходимо добавить в коробку %d элементов", items.length - i));
             }
-        }
-        return difference;
+       }
+        int randomInt = random.nextInt(items.length);
+        return items[randomInt];
+
     }
 
 }
