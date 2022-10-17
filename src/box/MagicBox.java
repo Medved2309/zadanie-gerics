@@ -16,7 +16,7 @@ public class MagicBox<T> {
         for (int i = 0; i < items.length; i++) {
             if (items[i] == null) {
                 items[i] = item;
-                System.out.println("Добавили " + item);
+                System.out.println("Добавили: " + item + ". Осталость добавить элементов: " + (items.length - i - 1));
                 return true;
             }
         }
@@ -27,7 +27,7 @@ public class MagicBox<T> {
     public T pick() {
         for (int i = 0; i < items.length; i++) {
             if (items[i] == null) {
-                throw new RuntimeException(String.format("Коробка не заполна, необходимо добавить в коробку %d элементов", items.length - i));
+                throw new RuntimeException(String.format("Коробка не заполна, необходимо добавить в коробку %d элементов", items.length - i ));
             }
         }
         int randomInt = random.nextInt(items.length);
